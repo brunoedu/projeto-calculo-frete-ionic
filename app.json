@@ -1,0 +1,7 @@
+    {
+        "name": "IonicTeste",
+        "description": "App Description",
+        "repository": "https://github.com/brunoedu/ionicteste",
+        "logo": "http://pereless360.com/img/SP/Ghost/360-logo-white.png",
+        "keywords": ["ionic2", "heroku", "teste"]
+    }
