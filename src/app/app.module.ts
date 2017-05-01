@@ -28,7 +28,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      backButtonText: '',
+      iconMode: 'md'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

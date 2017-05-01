@@ -1,6 +1,12 @@
 page-login {
-	ion-card{
-  		display: block;
-  		vertical-align: middle;
+	ion-grid{
+		height: 100%;
 	}
+
+	.card-md{
+		margin-top: calc(50% - 20px);
+    	border: solid 10px;
+    	border-color: #387ef5;
+	}
+
 }
