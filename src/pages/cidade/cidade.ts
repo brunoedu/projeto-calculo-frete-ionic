@@ -15,6 +15,8 @@ import { ListaCidadePage } from '../lista-cidade/lista-cidade';
 })
 export class CidadePage {
 
+  imgCidade:boolean=false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   cadastrarCidades(){

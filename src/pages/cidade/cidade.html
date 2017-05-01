@@ -15,7 +15,8 @@
 
 <ion-content padding>
 	<ion-card>
-	  <img src="img/cidade.jpg"/>
+	  <img (load)="imgCidade = true" [ngClass]="{'img-loaded':imgCidade}" [hidden]="!imgCidade" src="img/cidade.jpg">
+	  <ion-spinner color="primary" [ngClass]="{'center center-profile':true}" *ngIf="!imgCidade"></ion-spinner>
 	  <ion-card-content>
 	    <ion-card-title>
 	      Cadastro de cidades
