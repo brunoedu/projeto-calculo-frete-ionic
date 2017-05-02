@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /*
   Generated class for the CalculoFrete page.
@@ -13,10 +14,23 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class CalculoFretePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  calculoFrete:FormGroup;
+ 
+  enviarCalculo:boolean = false;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CalculoFretePage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+  	this.calculoFrete = formBuilder.group({
+        origem: ['', Validators.required],
+        destino: ['', Validators.required]
+    });
+  }
+
+  calcularFrete(){
+  	this.enviarCalculo = true;
+  	if(this.calculoFrete.valid){
+        console.log("success!")
+        console.log(this.calculoFrete.value);
+    }
   }
 
 }
