@@ -24517,12 +24517,6 @@ ion-navbar.toolbar {
   }
 }
 
-page-cidade .img-loaded::after {
-  opacity: 0.1;
-  -webkit-animation: opacity 1s;
-  animation: opacity 1s;
-}
-
 page-cidade .img-loaded + ion-spinner {
   display: none;
 }
@@ -24534,22 +24528,15 @@ page-cidade .center {
   display: block;
 }
 
-@-webkit-keyframes opacity {
-  0% {
-    opacity: 0.1;
-  }
-  100% {
-    opacity: 1;
-  }
+page-frete .img-loaded + ion-spinner {
+  display: none;
 }
 
-@keyframes opacity {
-  0% {
-    opacity: 0.1;
-  }
-  100% {
-    opacity: 1;
-  }
+page-frete .center {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  display: block;
 }
 
 page-login ion-grid {
