@@ -1,13 +1,5 @@
 page-cidade {
 
-  .img-loaded{   
-  }
-
-  .img-loaded::after{
-	opacity: 0.1;
-	animation: opacity 1s;
-  }
-
   .img-loaded + ion-spinner {
     display:none;
   }
@@ -17,13 +9,4 @@ page-cidade {
     margin-top: 10%;
     display: block;
   }  
-
-  @keyframes opacity{
-	  0%{
-	      opacity: 0.1;
-	    }
-	  100%{
-	      opacity: 1;
-	  }
-  }
 }

@@ -1,3 +1,13 @@
 page-frete {
 
+  .img-loaded + ion-spinner {
+    display:none;
+  }
+  .center{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    display: block;
+  } 
+
 }
