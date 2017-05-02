@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /*
   Generated class for the CadastroCidade page.
@@ -13,10 +14,25 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class CadastroCidadePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  cadastroCidade:FormGroup;
+ 
+  enviarCadastro:boolean = false;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroCidadePage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+  	this.cadastroCidade = formBuilder.group({
+        nome: ['', Validators.compose([Validators.maxLength(50), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+        geocodigo: ['', Validators.required],
+        latitude: ['', Validators.required],
+        longitude: ['', Validators.required]
+    });
+  }
+
+  cadastrarCidade(){
+  	this.enviarCadastro = true;
+  	if(this.cadastroCidade.valid){
+        console.log("success!")
+        console.log(this.cadastroCidade.value);
+    }
   }
 
 }

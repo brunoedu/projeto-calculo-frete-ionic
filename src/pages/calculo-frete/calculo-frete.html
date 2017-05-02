@@ -13,6 +13,39 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding text-center>
+	<p *ngIf="enviarCalculo && !calculoFrete.valid" style="color: #ea6153;">Selecione as cidades corretamente.</p>
+	 
+	<ion-list no-lines>
+	 
+	    <form [formGroup]="calculoFrete">
+	 
+	        <ion-item>
+	            <ion-label floating>Cidade Origem</ion-label>
+			    <ion-select formControlName="origem" [class.invalid]="!calculoFrete.controls.origem.valid && (calculoFrete.controls.origem.dirty || enviarCalculo)">
+			      <ion-option value="1">São Paulo</ion-option>
+			      <ion-option value="2">Guaratinguetá</ion-option>
+			      <ion-option value="3">Lorena</ion-option>
+			    </ion-select>
+	        </ion-item>
 
+	        <ion-item>
+	            <ion-label floating>Cidade Destino</ion-label>
+			    <ion-select formControlName="destino" [class.invalid]="!calculoFrete.controls.destino.valid && (calculoFrete.controls.destino.dirty || enviarCalculo)">
+			      <ion-option value="1">São Paulo</ion-option>
+			      <ion-option value="2">Guaratinguetá</ion-option>
+			      <ion-option value="3">Lorena</ion-option>
+			    </ion-select>
+	        </ion-item>
+
+	        <ion-item>		    
+			    <button item-right ion-button round icon-left (click)="calcularFrete()">
+				  <ion-icon name="calculator"></ion-icon>
+				  Calcular Frete
+				</button>
+	        </ion-item>
+	 
+	    </form>
+	 
+	</ion-list>
 </ion-content>
