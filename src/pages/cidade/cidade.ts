@@ -20,7 +20,7 @@ import { ListaCidadePage } from '../lista-cidade/lista-cidade';
       state('invisible', style({
         opacity: 0.1
       })),
-      transition('visible <=> invisible', animate('500ms linear'))
+      transition('visible <=> invisible', animate('700ms linear'))
     ]) 
   ]
 })
@@ -43,12 +43,12 @@ export class CidadePage {
 
   carregaFotoCidade() {
   	this.imgCidade = true
-    this.fadeStateCidade = (this.fadeStateCidade == 'visible') ? 'invisible' : 'visible';    
+    this.fadeStateCidade = 'visible';    
   }  
 
   carregaFotoListaCidade() {
   	this.imgListaCidade = true
-    this.fadeStateListaCidade = (this.fadeStateListaCidade == 'visible') ? 'invisible' : 'visible';    
+    this.fadeStateListaCidade = 'visible';    
   }
 
 }

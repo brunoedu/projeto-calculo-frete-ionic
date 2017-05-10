@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -10,9 +10,34 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ServiceProvider {
+  
+  api:string="http://localhost:8080/api/rest/";
+  //api:string="https://unisal-calculo-frete-api-ionic.herokuapp.com/api/rest/";
 
   constructor(public http: Http) {
-    console.log('Hello ServiceProvider Provider');
   }
 
+	getCities(){
+		return this.http.get(this.api+"city", {
+			method:"GET"
+		}).map(
+			(res:Response) => {
+				return res.json();
+			}
+		);
+	}
+
+	postCity(jsonCidade){		
+	    let headers = new Headers({'Content-Type' : 'application/json;charset=utf-8'});
+	    return this.http.post(this.api+"city", jsonCidade, {
+	        headers:headers,
+	        method:"POST"
+	    }).map(
+	        (res:Response) => {
+	        	return res.json();
+	        }
+	    );
+	}
+
 }
+

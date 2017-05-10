@@ -43,12 +43,12 @@ export class FretePage {
 
   carregaFotoFrete() {
   	this.imgFrete = true
-    this.fadeStateFrete = (this.fadeStateFrete == 'visible') ? 'invisible' : 'visible';    
+    this.fadeStateFrete = 'visible';    
   }  
 
   carregaFotoListaFrete() {
   	this.imgListaFrete = true
-    this.fadeStateListaFrete = (this.fadeStateListaFrete == 'visible') ? 'invisible' : 'visible';    
+    this.fadeStateListaFrete = 'visible';    
   }
 
 }

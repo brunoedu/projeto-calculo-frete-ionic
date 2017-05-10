@@ -10,6 +10,7 @@ import { ListaCidadePage } from '../pages/lista-cidade/lista-cidade';
 import { FretePage } from '../pages/frete/frete';
 import { CalculoFretePage } from '../pages/calculo-frete/calculo-frete';
 import { ListaFretePage } from '../pages/lista-frete/lista-frete';
+import { ServiceProvider } from '../providers/service-provider';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -49,6 +50,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    {provide: ServiceProvider, useClass: ServiceProvider},
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
