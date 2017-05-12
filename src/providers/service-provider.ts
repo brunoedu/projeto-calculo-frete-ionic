@@ -11,8 +11,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceProvider {
   
-  api:string="http://localhost:8080/api/rest/";
-  //api:string="https://unisal-calculo-frete-api-ionic.herokuapp.com/api/rest/";
+  //api:string="http://localhost:8080/api/rest/";
+  api:string="https://unisal-calculo-frete-api-ionic.herokuapp.com/rest/";
 
   constructor(public http: Http) {
   }
