@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { ServiceProvider } from '../../providers/service-provider';
 
 /*
   Generated class for the ListaCidade page.
@@ -11,12 +12,51 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-lista-cidade',
   templateUrl: 'lista-cidade.html'
 })
-export class ListaCidadePage {
+export class ListaCidadePage implements OnInit{
+  
+  cities:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public service: ServiceProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaCidadePage');
+  ngOnInit(){
+  	this.getCities();
+  }
+
+  getCities(){
+  	let loading = this.loadingCtrl.create({
+	      content: 'Carregando cidades...'
+	});
+	 
+	loading.present();
+  	this.service.getCities().subscribe(
+          cities=>{  
+          	this.cities = cities;
+          	loading.dismiss();
+          	console.log(this.cities);
+          },
+          err=>{            
+            console.log(err);
+          	loading.dismiss();
+
+		  	let alert = this.alertCtrl.create({
+		                          title: 'Listagem de cidades',
+		                          message: 'Falha ao carregar cidades!!',
+		                          buttons: [
+		                          	  {
+	 	                                text: 'Carregar novamente',
+			                            handler: data => {  
+			                              this.getCities();		                              
+			                          	}
+			                          },
+		                              {
+		                              	text: 'Cancelar',
+		                              	role: 'cancel',
+		                              }		                            
+		                          ]
+		                    });
+		     alert.present();
+          }
+      );
   }
 
 }
