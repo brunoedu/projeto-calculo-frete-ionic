@@ -45,7 +45,10 @@ export class CadastroCidadePage {
 	    loading.present();
 	    this.service.postCity(jsonCity).subscribe(
 	        success=>{
-	          this.cidadeRetorno=success;
+	          this.cidadeRetorno={};
+	          this.cidadeRetorno.nome=nome;
+	          this.cidadeRetorno.latitude=latitude;
+	          this.cidadeRetorno.longitude=longitude;
 	          this.showAlert("Sucesso");
 	          this.cadastroCidade.reset();
 	          this.enviarCadastro = false;
