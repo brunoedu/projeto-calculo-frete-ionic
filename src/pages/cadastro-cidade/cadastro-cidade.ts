@@ -21,7 +21,7 @@ export class CadastroCidadePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public service: ServiceProvider, public formBuilder: FormBuilder) {
   	this.cadastroCidade = formBuilder.group({
-        nome: ['', Validators.compose([Validators.maxLength(50), Validators.pattern('[a-zA-ZçáàãâéèêẽíìĩîóòôõúùũüûÇÀÁÂÃÈÉÊẼÌÍÎĨÒÓÔÕÙÚÛŨ]*'), Validators.required])],
+        nome: ['', Validators.compose([Validators.maxLength(50), Validators.required])],
         geocodigo: ['', Validators.required],
         latitude: ['', Validators.required],
         longitude: ['', Validators.required]
@@ -31,7 +31,6 @@ export class CadastroCidadePage {
   cadastrarCidade(){
   	this.enviarCadastro = true;
   	if(this.cadastroCidade.valid){
-        console.log(this.cadastroCidade.value)
         let nome = this.cadastroCidade.value.nome;
         let geocodigo = this.cadastroCidade.value.geocodigo;
         let latitude = this.cadastroCidade.value.latitude;

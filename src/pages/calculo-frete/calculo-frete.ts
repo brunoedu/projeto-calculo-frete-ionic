@@ -41,10 +41,8 @@ export class CalculoFretePage implements OnInit{
           cities=>{  
           	this.cities = cities;
           	loading.dismiss();
-          	console.log(this.cities);
           },
           err=>{            
-            console.log(err);
           	loading.dismiss();
 
 		  	let alert = this.alertCtrl.create({
@@ -108,7 +106,6 @@ export class CalculoFretePage implements OnInit{
   		this.calculoFrete.get('destino').setValue('');
   	else if(this.calculoFrete.value.origem == this.calculoFrete.value.destino)
   		this.calculoFrete.get('origem').setValue('');
-  	console.log(this.calculoFrete.value);
   }
 
   showAlert(msg){
