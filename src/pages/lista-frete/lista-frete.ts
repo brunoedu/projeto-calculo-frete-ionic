@@ -32,10 +32,8 @@ export class ListaFretePage implements OnInit{
           fretes=>{  
           	this.fretes = fretes;
           	loading.dismiss();
-          	console.log(this.fretes);
           },
           err=>{            
-            console.log(err);
           	loading.dismiss();
 
 		  	let alert = this.alertCtrl.create({

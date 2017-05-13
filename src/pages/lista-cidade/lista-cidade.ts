@@ -32,10 +32,8 @@ export class ListaCidadePage implements OnInit{
           cities=>{  
           	this.cities = cities;
           	loading.dismiss();
-          	console.log(this.cities);
           },
           err=>{            
-            console.log(err);
           	loading.dismiss();
 
 		  	let alert = this.alertCtrl.create({
