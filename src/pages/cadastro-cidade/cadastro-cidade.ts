@@ -16,6 +16,7 @@ import { ServiceProvider } from '../../providers/service-provider';
 export class CadastroCidadePage {
 
   cadastroCidade:FormGroup;
+  cidadeRetorno:any=undefined;
  
   enviarCadastro:boolean = false;
 
@@ -44,6 +45,7 @@ export class CadastroCidadePage {
 	    loading.present();
 	    this.service.postCity(jsonCity).subscribe(
 	        success=>{
+	          this.cidadeRetorno=success;
 	          this.showAlert("Sucesso");
 	          this.cadastroCidade.reset();
 	          this.enviarCadastro = false;
