@@ -15,40 +15,16 @@
 
 <ion-content padding>
 	<ion-list>
-	  <ion-item>
+	  <ion-item *ngFor="let frete of fretes">
 	    <ion-icon color="primary" name="map" item-left></ion-icon>
 	      <p>Origem</p>
-	      <h3>Guaratinguetá</h3>
+	      <h3>{{frete.cidadeA.nome}}</h3>
 	      <p>Destino</p>
-	      <h3>São Paulo</h3>
+	      <h3>{{frete.cidadeB.nome}}</h3>
 	      <div item-right text-center>
-		      <p>100 km</p>
+		      <p>{{frete.distancia.toFixed(2)}} km</p>
 		      <br/>
-		      <p>R$ 100,00</p>
-	      </div>
-	  </ion-item>
-	  <ion-item>
-	    <ion-icon color="primary" name="map" item-left></ion-icon>
-	      <p>Origem</p>
-	      <h3>Guaratinguetá</h3>
-	      <p>Destino</p>
-	      <h3>Lorena</h3>
-	      <div item-right text-center>
-		      <p>100 km</p>
-		      <br/>
-		      <p>R$ 100,00</p>
-	      </div>
-	  </ion-item>
-	  <ion-item>
-	    <ion-icon color="primary" name="map" item-left></ion-icon>
-	      <p>Origem</p>
-	      <h3>Lorena</h3>
-	      <p>Destino</p>
-	      <h3>São Paulo</h3>
-	      <div item-right text-center>
-		      <p>100 km</p>
-		      <br/>
-		      <p>R$ 100,00</p>
+		      <p>R$ {{frete.valorFrete.toFixed(2)}}</p>
 	      </div>
 	  </ion-item>
 	</ion-list>

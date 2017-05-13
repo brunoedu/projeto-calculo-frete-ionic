@@ -22,19 +22,15 @@
 	 
 	        <ion-item>
 	            <ion-label floating>Cidade Origem</ion-label>
-			    <ion-select formControlName="origem" [class.invalid]="!calculoFrete.controls.origem.valid && (calculoFrete.controls.origem.dirty || enviarCalculo)">
-			      <ion-option value="1">São Paulo</ion-option>
-			      <ion-option value="2">Guaratinguetá</ion-option>
-			      <ion-option value="3">Lorena</ion-option>
+			    <ion-select formControlName="origem" [class.invalid]="!calculoFrete.controls.origem.valid && (calculoFrete.controls.origem.dirty || enviarCalculo)" (ionChange)="removeArrayCity(1)">
+		      	  <ion-option *ngFor="let city of cities" value="{{city.id}}">{{city.nome}}</ion-option>      
 			    </ion-select>
 	        </ion-item>
 
 	        <ion-item>
 	            <ion-label floating>Cidade Destino</ion-label>
-			    <ion-select formControlName="destino" [class.invalid]="!calculoFrete.controls.destino.valid && (calculoFrete.controls.destino.dirty || enviarCalculo)">
-			      <ion-option value="1">São Paulo</ion-option>
-			      <ion-option value="2">Guaratinguetá</ion-option>
-			      <ion-option value="3">Lorena</ion-option>
+			    <ion-select formControlName="destino" [class.invalid]="!calculoFrete.controls.destino.valid && (calculoFrete.controls.destino.dirty || enviarCalculo)" (ionChange)="removeArrayCity(2)">
+		      	  <ion-option *ngFor="let city of cities" value="{{city.id}}">{{city.nome}}</ion-option>  
 			    </ion-select>
 	        </ion-item>
 
@@ -47,5 +43,20 @@
 	 
 	    </form>
 	 
+	</ion-list>
+
+	<ion-list *ngIf="retornoFrete!=undefined">
+	  <ion-item>
+	    <ion-icon color="primary" name="map" item-left></ion-icon>
+	      <p>Origem</p>
+	      <h3>{{retornoFrete.cidadeA.nome}}</h3>
+	      <p>Destino</p>
+	      <h3>{{retornoFrete.cidadeB.nome}}</h3>
+	      <div item-right text-center>
+		      <p>{{retornoFrete.distancia.toFixed(2)}} km</p>
+		      <br/>
+		      <p>R$ {{retornoFrete.valorFrete.toFixed(2)}}</p>
+	      </div>
+	  </ion-item>
 	</ion-list>
 </ion-content>

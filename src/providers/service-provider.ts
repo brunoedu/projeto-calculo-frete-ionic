@@ -39,5 +39,28 @@ export class ServiceProvider {
 	    );
 	}
 
+	getFretes(){
+		return this.http.get(this.api+"frete", {
+			method:"GET"
+		}).map(
+			(res:Response) => {
+				return res.json();
+			}
+		);
+	}
+
+	postFrete(jsonFrete){		
+	    let headers = new Headers({'Content-Type' : 'application/json;charset=utf-8'});
+	    return this.http.post(this.api+"frete", jsonFrete, {
+	        headers:headers,
+	        method:"POST"
+	    }).map(
+	        (res:Response) => {
+	        	return res.json();
+	        }
+	    );
+	}
+
+
 }
 
