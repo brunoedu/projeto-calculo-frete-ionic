@@ -11,8 +11,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceProvider {
   
-  //api:string="http://localhost:8080/api/rest/";
-  api:string="https://unisal-calculo-frete-api-ionic.herokuapp.com/rest/";
+  api:string="http://localhost:8080/api/rest/";
+  //api:string="https://unisal-calculo-frete-api-ionic.herokuapp.com/rest/";
 
   constructor(public http: Http) {
   }
@@ -38,6 +38,29 @@ export class ServiceProvider {
 	        }
 	    );
 	}
+
+	getFretes(){
+		return this.http.get(this.api+"frete", {
+			method:"GET"
+		}).map(
+			(res:Response) => {
+				return res.json();
+			}
+		);
+	}
+
+	postFrete(jsonFrete){		
+	    let headers = new Headers({'Content-Type' : 'application/json;charset=utf-8'});
+	    return this.http.post(this.api+"frete", jsonFrete, {
+	        headers:headers,
+	        method:"POST"
+	    }).map(
+	        (res:Response) => {
+	        	return res.json();
+	        }
+	    );
+	}
+
 
 }
 

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { ServiceProvider } from '../../providers/service-provider';
 
 /*
   Generated class for the ListaFrete page.
@@ -11,12 +12,51 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-lista-frete',
   templateUrl: 'lista-frete.html'
 })
-export class ListaFretePage {
+export class ListaFretePage implements OnInit{
+  
+  fretes:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public service: ServiceProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaFretePage');
+  ngOnInit(){
+  	this.getFretes();
+  }
+
+  getFretes(){
+  	let loading = this.loadingCtrl.create({
+	      content: 'Carregando fretes...'
+	});
+	 
+	loading.present();
+  	this.service.getFretes().subscribe(
+          fretes=>{  
+          	this.fretes = fretes;
+          	loading.dismiss();
+          	console.log(this.fretes);
+          },
+          err=>{            
+            console.log(err);
+          	loading.dismiss();
+
+		  	let alert = this.alertCtrl.create({
+		                          title: 'Listagem de fretes',
+		                          message: 'Falha ao carregar fretes!!',
+		                          buttons: [
+		                          	  {
+	 	                                text: 'Carregar novamente',
+			                            handler: data => {  
+			                              this.getFretes();		                              
+			                          	}
+			                          },
+		                              {
+		                              	text: 'Cancelar',
+		                              	role: 'cancel',
+		                              }		                            
+		                          ]
+		                    });
+		     alert.present();
+          }
+      );
   }
 
 }
