@@ -49,5 +49,13 @@
 	 
 	    </form>
 	 
+	</ion-list>	
+
+	<ion-list *ngIf="cidadeRetorno!=undefined">
+	  <ion-item>
+	    <ion-icon color="primary" name="globe" item-left></ion-icon>
+	      <h2>{{cidadeRetorno.nome}}</h2>
+	      <p>Lat.: {{cidadeRetorno.latitude}} / Lon.: {{cidadeRetorno.longitude}}</p>
+	  </ion-item>
 	</ion-list>
 </ion-content>
