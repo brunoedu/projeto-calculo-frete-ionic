@@ -44,4 +44,19 @@
 	    </form>
 	 
 	</ion-list>
+
+	<ion-list *ngIf="retornoFrete!=undefined">
+	  <ion-item>
+	    <ion-icon color="primary" name="map" item-left></ion-icon>
+	      <p>Origem</p>
+	      <h3>{{retornoFrete.cidadeA.nome}}</h3>
+	      <p>Destino</p>
+	      <h3>{{retornoFrete.cidadeB.nome}}</h3>
+	      <div item-right text-center>
+		      <p>{{retornoFrete.distancia.toFixed(2)}} km</p>
+		      <br/>
+		      <p>R$ {{retornoFrete.valorFrete.toFixed(2)}}</p>
+	      </div>
+	  </ion-item>
+	</ion-list>
 </ion-content>

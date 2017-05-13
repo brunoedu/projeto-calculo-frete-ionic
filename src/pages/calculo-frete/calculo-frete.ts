@@ -18,6 +18,7 @@ export class CalculoFretePage implements OnInit{
   calculoFrete:FormGroup;
   cities:any;
   enviarCalculo:boolean = false;
+  retornoFrete:any=undefined;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public service: ServiceProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   	this.calculoFrete = formBuilder.group({
@@ -82,6 +83,7 @@ export class CalculoFretePage implements OnInit{
 	    this.service.postFrete(jsonFrete).subscribe(
 	        success=>{
 	          this.showAlert("Sucesso");
+	          this.retornoFrete=success;
 	          this.calculoFrete.reset();
 	          this.enviarCalculo = false;
 	          loading.dismiss();    
